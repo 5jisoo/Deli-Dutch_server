@@ -1,6 +1,8 @@
 package com.cokothon.DeliDutch.entity;
 
 import com.cokothon.DeliDutch.constant.Dormitory;
+import com.cokothon.DeliDutch.dto.BoardSepDto;
+import com.cokothon.DeliDutch.dto.BoardTogDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -44,4 +46,17 @@ public class BoardSep {
 
     @Enumerated(EnumType.STRING)
     private Dormitory dormitory;
+
+    public static BoardSepDto of(BoardSep boardSep) {
+        return BoardSepDto.builder()
+                .id(boardSep.getId())
+                .dormitory(boardSep.getDormitory())
+                .openKakao(boardSep.getOpenKakao())
+                .pick_up(boardSep.getPick_up())
+                .end_time(boardSep.getEndTime())
+                .host_id(boardSep.getUser().getId())
+                .restaurant_id(boardSep.getRestaurant().getId())
+                .board_title(boardSep.getBoardTitle())
+                .build();
+    }
 }
