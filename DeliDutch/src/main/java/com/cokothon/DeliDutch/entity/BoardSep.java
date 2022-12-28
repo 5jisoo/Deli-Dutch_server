@@ -37,5 +37,11 @@ public class BoardSep {
     @Column(name = "open_kakao")
     private String openKakao;
 
+    @Column(name = "board_sep_title")
+    private String boardTitle;
+
+    @Column(name = "board_sep_content")
+    @Lob
+    private String contents;
 
 }
