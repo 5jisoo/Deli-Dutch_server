@@ -3,6 +3,7 @@ package com.cokothon.DeliDutch.dto;
 import com.cokothon.DeliDutch.constant.Dormitory;
 import com.cokothon.DeliDutch.entity.*;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -15,10 +16,11 @@ import java.time.LocalDateTime;
 public class BoardTogDto {
 
     private Long id;
-    private Long host_id;     // 게시판 만든 사용자 아이디
-    private Long food_id;           // 음식 아이디
-    private int recruits_cnt;
+    private Long host_id;       // 게시판 만든 사용자 아이디
+    private String food_name;   // 음식 이름
+    private int recruits_cnt;   // 정원
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd 'T' HH:mm:ss")
     private LocalDateTime end_time;
     private String pick_up;
     private String openKakao;
@@ -27,7 +29,7 @@ public class BoardTogDto {
     public BoardTogDto(BoardTog boardTog) {
         this.id = boardTog.getId();
         this.host_id = boardTog.getCreated_by().getId();
-        this.food_id = boardTog.getFood().getId();
+        this.food_name = boardTog.getFood().getName();
         this.recruits_cnt = boardTog.getRecruits_cnt();
         this.pick_up = boardTog.getPick_up();
         this.openKakao = boardTog.getOpenKakao();

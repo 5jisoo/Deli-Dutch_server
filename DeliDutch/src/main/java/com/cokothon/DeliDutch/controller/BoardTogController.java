@@ -2,6 +2,7 @@ package com.cokothon.DeliDutch.controller;
 
 import com.cokothon.DeliDutch.constant.Dormitory;
 import com.cokothon.DeliDutch.dto.BoardTogDto;
+import com.cokothon.DeliDutch.dto.BoardTogFormDto;
 import com.cokothon.DeliDutch.dto.ResponseDTO;
 import com.cokothon.DeliDutch.entity.BoardTog;
 import com.cokothon.DeliDutch.repository.BoardTogRepository;
@@ -43,15 +44,15 @@ public class BoardTogController {
     }
 
 
-    @PostMapping("/api/v1/boardTog")
-    public BoardTogDto create(@RequestBody BoardTogDto boardTogDto) {
+    @PostMapping()
+    public BoardTogDto create(@RequestBody BoardTogFormDto boardTogFormDto) {
         BoardTog entity = BoardTog.builder()
-                .created_by(userRepository.findById(boardTogDto.getHost_id()).get())
-                .food(foodRepository.findById(boardTogDto.getFood_id()).get())
-                .recruits_cnt(boardTogDto.getRecruits_cnt())
-                .pick_up(boardTogDto.getPick_up())
-                .openKakao(boardTogDto.getOpenKakao())
-                .dormitory(boardTogDto.getDormitory()).build();
+                .created_by(userRepository.findById(boardTogFormDto.getHost_id()).get())
+                .food(foodRepository.findById(boardTogFormDto.getFood_id()).get())
+                .recruits_cnt(boardTogFormDto.getRecruits_cnt())
+                .pick_up(boardTogFormDto.getPick_up())
+                .openKakao(boardTogFormDto.getOpenKakao())
+                .dormitory(boardTogFormDto.getDormitory()).build();
 
         return new BoardTogDto(boardTogService.save(entity));
     }
