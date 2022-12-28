@@ -17,15 +17,15 @@ public class UserDto {
     private String password;
     private Dormitory dormitory;
 
-    public UserDto toUserDtoEntity() {
-        UserDto userDto = UserDto.builder()
-                .id(id)
-                .username(username)
-                .email(email)
-                .password(password)
-                .dormitory(dormitory)
+    public static User toUserDtoEntity(UserDto userDto) {
+        User user = User.builder()
+                .id(userDto.getId())
+                .username(userDto.getUsername())
+                .email(userDto.getEmail())
+                .password(userDto.getPassword())
+                .dormitory(userDto.getDormitory())
                 .build();
 
-        return userDto;
+        return user;
     }
 }

@@ -43,5 +43,4 @@ public class BoardSep {
     @Column(name = "board_sep_content")
     @Lob
     private String contents;
-
 }
