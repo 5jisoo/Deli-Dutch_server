@@ -3,6 +3,7 @@ package com.cokothon.DeliDutch.dto;
 import com.cokothon.DeliDutch.constant.Dormitory;
 import com.cokothon.DeliDutch.entity.BoardSep;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
@@ -17,11 +18,12 @@ public class BoardSepDto {
 
     private Long restaurant_id;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd 'T' HH:mm:ss")
     private LocalDateTime end_time;
 
     private String pick_up;
 
-    private String openKakako;
+    private String openKakao;
 
     private String board_title;
 
@@ -33,7 +35,7 @@ public class BoardSepDto {
         this.restaurant_id = boardSep.getRestaurant().getId();
         this.end_time = boardSep.getEndTime();
         this.pick_up = boardSep.getPick_up();
-        this.openKakako = boardSep.getOpenKakao();
+        this.openKakao = boardSep.getOpenKakao();
         this.board_title = boardSep.getBoardTitle();
         this.dormitory = boardSep.getDormitory();
     }

@@ -1,9 +1,12 @@
 package com.cokothon.DeliDutch;
 
+import com.cokothon.DeliDutch.constant.Dormitory;
 import com.cokothon.DeliDutch.entity.Food;
 import com.cokothon.DeliDutch.entity.Restaurant;
+import com.cokothon.DeliDutch.entity.User;
 import com.cokothon.DeliDutch.service.FoodService;
 import com.cokothon.DeliDutch.service.RestaurantService;
+import com.cokothon.DeliDutch.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +18,7 @@ public class DataInit {
 
     private final FoodService foodService;
     private final RestaurantService restaurantService;
+    private final UserService userService;
 
     @PostConstruct
     public void init() {
@@ -27,6 +31,10 @@ public class DataInit {
         Food ch2 = foodService.save(Food.builder().name("레드콤보").price(16000).restaurant(kyochon).build());
         Food ch3 = foodService.save(Food.builder().name("오리지널콤보").price(15000).restaurant(kyochon).build());
 
-
+        User user = userService.save(User.builder()
+                .email("aaa@naver.com")
+                .username("s나송")
+                .password("aaa")
+                .dormitory(Dormitory.SOOKMYUNG).build());
     }
 }
