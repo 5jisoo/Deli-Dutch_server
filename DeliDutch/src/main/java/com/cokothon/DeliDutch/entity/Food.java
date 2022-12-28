@@ -1,9 +1,6 @@
 package com.cokothon.DeliDutch.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -14,6 +11,7 @@ import static javax.persistence.FetchType.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 public class Food {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
