@@ -12,15 +12,17 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private final Long id;
+    @Column(name = "restaurant_id")
+    private Long id;
 
     @OneToMany(mappedBy = "restaurant")
-    private final List<Food> food = new ArrayList<>();
+    private List<Food> food = new ArrayList<>();
 
     @Column
-    private final String category;
+    private String category;
 }

@@ -2,6 +2,7 @@ package com.cokothon.DeliDutch.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -11,19 +12,21 @@ import static javax.persistence.FetchType.*;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Food {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private final Long id;
+    @Column(name = "food_id")
+    private Long id;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "Food_ID")
-    private final Restaurant restaurant;
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurant;
+
+    @Column(name = "food_name")
+    private String name;
 
     @Column
-    private final String name;
-
-    @Column
-    private final int price;
+    private int price;
 }

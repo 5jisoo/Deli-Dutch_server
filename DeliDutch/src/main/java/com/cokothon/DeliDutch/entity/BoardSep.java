@@ -33,4 +33,5 @@ public class BoardSep {
     @Column(name = "open_kakao")
     private String openKakao;
 
+
 }
