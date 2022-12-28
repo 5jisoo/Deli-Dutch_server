@@ -27,6 +27,10 @@ public class BoardSep {
     @Column(name = "end_time")
     private LocalDateTime endTime;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurant;
+
     @Embedded
     private Address address;
 
