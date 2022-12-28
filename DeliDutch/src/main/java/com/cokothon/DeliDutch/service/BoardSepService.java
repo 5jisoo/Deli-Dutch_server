@@ -24,8 +24,8 @@ public class BoardSepService {
     }
 
     @Transactional(readOnly = true)
-    public List<BoardSepDto> retrieve(Dormitory dormitory) {
-        List<BoardSep> boardSepList = boardSepRepository.findBoardSepList(dormitory.name());
+    public List<BoardSepDto> retrieve(Dormitory dormitory, String category) {
+        List<BoardSep> boardSepList = boardSepRepository.findBoardSepList(dormitory.name(), category);
         List<BoardSepDto> setList = new ArrayList<>();
         for (BoardSep boardSep : boardSepList) {
             setList.add(BoardSep.of(boardSep));

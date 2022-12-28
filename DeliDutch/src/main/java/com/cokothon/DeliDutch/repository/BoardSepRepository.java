@@ -12,6 +12,7 @@ import java.util.List;
 public interface BoardSepRepository extends JpaRepository<BoardSep, Long> {
     List<BoardSep> findByDormitory(Dormitory dormitory);
 
-    @Query(value = "SELECT * FROM Board_Separate b WHERE b.dormitory =:dormitory AND b.end_time > SYSDATE() ORDER BY end_time; ", nativeQuery = true)
-    List<BoardSep> findBoardSepList(@Param("dormitory") String dormitory);
+
+    @Query(value = "SELECT * FROM Board_Separate b inner join Restaurant rs on b.restaurant_id = rs.restaurant_id WHERE b.dormitory =:dormitory AND b.end_time > SYSDATE() AND rs.category =:category ORDER BY end_time; ", nativeQuery = true)
+    List<BoardSep> findBoardSepList(@Param("dormitory") String dormitory, @Param("category") String category);
 }

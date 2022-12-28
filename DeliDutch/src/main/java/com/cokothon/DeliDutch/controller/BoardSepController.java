@@ -12,17 +12,16 @@ import com.cokothon.DeliDutch.repository.UserRepository;
 import com.cokothon.DeliDutch.service.BoardSepService;
 import com.cokothon.DeliDutch.service.BoardTogService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 public class BoardSepController {
 
     private final UserRepository userRepository;
@@ -30,11 +29,12 @@ public class BoardSepController {
     private final BoardSepService boardSepService;
 
     @GetMapping("/api/v1/boardSep")
-    public ResponseEntity<?> retrieveBoardSepList() {
+    public ResponseEntity<?> retrieveBoardSepList(@RequestParam String category) {
         try {
             Dormitory tempDormitory = Dormitory.KOOKMIN;
 
-            List<BoardSepDto> dtos = boardSepService.retrieve(tempDormitory);
+            log.info("category: {}", category);
+            List<BoardSepDto> dtos = boardSepService.retrieve(tempDormitory, category);
 
             ResponseDTO<BoardSepDto> response = ResponseDTO.<BoardSepDto>builder().data(dtos).build();
 
