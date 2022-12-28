@@ -5,6 +5,9 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
+# 에러 방지
+application.yml
+
 ### STS ###
 .apt_generated
 .classpath
