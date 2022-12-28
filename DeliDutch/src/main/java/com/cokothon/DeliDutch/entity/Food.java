@@ -1,5 +1,7 @@
 package com.cokothon.DeliDutch.entity;
 
+import com.cokothon.DeliDutch.dto.BoardSepDto;
+import com.cokothon.DeliDutch.dto.FoodDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -27,5 +29,13 @@ public class Food {
 
     @Column
     private int price;
+    public static FoodDto of(Food food) {
+        return FoodDto.builder()
+                .id(food.getId())
+                .restaurant_id(food.getRestaurant().getId())
+                .name(food.getName())
+                .price(food.getPrice())
+                .build();
+    }
 }
 

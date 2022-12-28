@@ -34,6 +34,14 @@ public class DataInit {
         Food ch2 = foodService.save(Food.builder().name("레드콤보").price(16000).restaurant(kyochon).build());
         Food ch3 = foodService.save(Food.builder().name("오리지널콤보").price(15000).restaurant(kyochon).build());
 
+        Restaurant k2 = restaurantService.save(Restaurant.builder()
+                .category("피자")
+                .build());
+
+        Food ch4 = foodService.save(Food.builder().name("허니콤보").price(17000).restaurant(k2).build());
+        Food ch5 = foodService.save(Food.builder().name("레드콤보").price(16000).restaurant(k2).build());
+        Food ch6 = foodService.save(Food.builder().name("오리지널콤보").price(15000).restaurant(k2).build());
+
         User user = userService.save(User.builder()
                 .email("aaa@naver.com")
                 .username("s나송")
