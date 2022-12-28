@@ -1,10 +1,7 @@
 package com.cokothon.DeliDutch.entity;
 
 import com.cokothon.DeliDutch.constant.Dormitory;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,6 +9,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Setter
 @Entity
 public class BoardTog {
 
