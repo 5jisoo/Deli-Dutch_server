@@ -11,6 +11,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 @Table(name = "User")
 public class User {
 
@@ -31,13 +32,13 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Dormitory dormitory;
 
-    @Builder
-    public User(String username, String email, String password, Dormitory dormitory) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.dormitory = dormitory;
-    }
+
+//    public User(String username, String email, String password, Dormitory dormitory) {
+//        this.username = username;
+//        this.email = email;
+//        this.password = password;
+//        this.dormitory = dormitory;
+//    }
 
     // 생성 메서드
 
