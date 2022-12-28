@@ -25,6 +25,7 @@ public class BoardTogDto {
     private String pick_up;
     private String openKakao;
     private Dormitory dormitory;
+    private String content;
 
     public BoardTogDto(BoardTog boardTog) {
         this.id = boardTog.getId();
@@ -35,5 +36,6 @@ public class BoardTogDto {
         this.pick_up = boardTog.getPick_up();
         this.openKakao = boardTog.getOpenKakao();
         this.dormitory = boardTog.getDormitory();
+        this.content = boardTog.getContent();
     }
 }

@@ -22,4 +22,5 @@ public class BoardTogFormDto {
     private String pick_up;
     private String openKakao;
     private Dormitory dormitory;
+    private String content;
 }

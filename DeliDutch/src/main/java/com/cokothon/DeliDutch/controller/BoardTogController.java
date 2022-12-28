@@ -51,7 +51,9 @@ public class BoardTogController {
                 .endTime(boardTogFormDto.getEnd_time())
                 .pick_up(boardTogFormDto.getPick_up())
                 .openKakao(boardTogFormDto.getOpenKakao())
-                .dormitory(boardTogFormDto.getDormitory()).build();
+                .dormitory(boardTogFormDto.getDormitory())
+                .content(boardTogFormDto.getContent())
+                .build();
 
         return new BoardTogDto(boardTogService.save(entity));
     }

@@ -57,6 +57,7 @@ public class BoardTog {
                 .end_time(boardTog.getEndTime())
                 .host_id(boardTog.getCreated_by().getId())
                 .food_name(boardTog.getFood().getName())
+                .content(boardTog.getContent())
                 .build();
     }
 }
