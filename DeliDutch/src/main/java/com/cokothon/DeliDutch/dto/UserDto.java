@@ -9,6 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Builder
 public class UserDto {
     private Long id;
     private String username;
@@ -16,14 +17,14 @@ public class UserDto {
     private String password;
     private Dormitory dormitory;
 
-    public static UserDto toUserDto(User user) {
-        UserDto userDto = new UserDto();
-
-        userDto.setId(user.getId());
-        userDto.setUsername(user.getUsername());
-        userDto.setEmail(user.getEmail());
-        userDto.setPassword(user.getPassword());
-        userDto.setDormitory(user.getDormitory());
+    public UserDto toUserDtoEntity() {
+        UserDto userDto = UserDto.builder()
+                .id(id)
+                .username(username)
+                .email(email)
+                .password(password)
+                .dormitory(dormitory)
+                .build();
 
         return userDto;
     }
