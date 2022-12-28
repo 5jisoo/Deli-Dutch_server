@@ -5,9 +5,11 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+
 @Getter
-@Setter(AccessLevel.PROTECTED)
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "User")
 public class User {
@@ -40,3 +42,4 @@ public class User {
     // 생성 메서드
 
 }
+

@@ -29,4 +29,6 @@ public class Food {
 
     @Column
     private int price;
+
 }
+
