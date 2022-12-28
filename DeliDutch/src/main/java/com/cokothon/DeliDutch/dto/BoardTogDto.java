@@ -5,6 +5,7 @@ import com.cokothon.DeliDutch.entity.*;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -17,10 +18,10 @@ public class BoardTogDto {
     private Long host_id;     // 게시판 만든 사용자 아이디
     private Long food_id;           // 음식 아이디
     private int recruits_cnt;
+
+    private LocalDateTime end_time;
     private String pick_up;
     private String openKakao;
-    private String content;
-
     private Dormitory dormitory;
 
     public BoardTogDto(BoardTog boardTog) {
@@ -30,7 +31,6 @@ public class BoardTogDto {
         this.recruits_cnt = boardTog.getRecruits_cnt();
         this.pick_up = boardTog.getPick_up();
         this.openKakao = boardTog.getOpenKakao();
-        this.content = boardTog.getContent();
         this.dormitory = boardTog.getDormitory();
     }
 }

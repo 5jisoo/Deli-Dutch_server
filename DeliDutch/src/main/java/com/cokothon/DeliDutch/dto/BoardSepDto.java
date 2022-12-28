@@ -1,10 +1,7 @@
 package com.cokothon.DeliDutch.dto;
 
 import com.cokothon.DeliDutch.constant.Dormitory;
-import com.cokothon.DeliDutch.entity.Address;
 import com.cokothon.DeliDutch.entity.BoardSep;
-import com.cokothon.DeliDutch.entity.Restaurant;
-import com.cokothon.DeliDutch.entity.User;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -28,8 +25,6 @@ public class BoardSepDto {
 
     private String board_title;
 
-    private String content;
-
     private Dormitory dormitory;
 
     public BoardSepDto(BoardSep boardSep) {
@@ -40,7 +35,6 @@ public class BoardSepDto {
         this.pick_up = boardSep.getPick_up();
         this.openKakako = boardSep.getOpenKakao();
         this.board_title = boardSep.getBoardTitle();
-        this.content = boardSep.getContents();
         this.dormitory = boardSep.getDormitory();
     }
 }
