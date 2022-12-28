@@ -37,4 +37,8 @@ public class BoardTog {
     @Column(name = "open_kakao")
     private String openKakao;
 
+
+    @Column
+    private String content;
+
 }
