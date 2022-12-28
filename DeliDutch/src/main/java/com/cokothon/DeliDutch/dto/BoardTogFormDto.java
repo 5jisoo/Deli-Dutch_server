@@ -14,8 +14,8 @@ import java.time.LocalDateTime;
 public class BoardTogFormDto {
     private Long id;
 
-    private Long host_id;           // 게시판 만든 사용자 아이디
-    private Long food_id;           // 음식 이름
+    private Long host_id;
+    private Long food_id;
     private int recruits_cnt;
 
     private LocalDateTime end_time;
