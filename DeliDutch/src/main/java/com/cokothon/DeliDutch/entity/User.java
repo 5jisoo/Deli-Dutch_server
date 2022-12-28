@@ -1,17 +1,13 @@
 package com.cokothon.DeliDutch.entity;
 
 import com.cokothon.DeliDutch.constant.Dormitory;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
+@Setter(AccessLevel.PROTECTED)
 @Entity
 @Table(name = "User")
 public class User {
@@ -19,17 +15,28 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
-    Long id;
+    private Long id;
 
     @Column(nullable = false)
-    String username;
+    private String username;
 
     @Column(unique = true, nullable = false)
-    String email;
+    private String email;
 
     @Column(nullable = false)
-    String password;
+    private String password;
 
     @Enumerated(EnumType.STRING)
-    Dormitory dormitory;
+    private Dormitory dormitory;
+
+    @Builder
+    public User(String username, String email, String password, Dormitory dormitory) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.dormitory = dormitory;
+    }
+
+    // 생성 메서드
+
 }
