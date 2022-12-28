@@ -1,9 +1,6 @@
 package com.cokothon.DeliDutch.dto;
 
-import com.cokothon.DeliDutch.entity.Address;
-import com.cokothon.DeliDutch.entity.BoardTog;
-import com.cokothon.DeliDutch.entity.Food;
-import com.cokothon.DeliDutch.entity.User;
+import com.cokothon.DeliDutch.entity.*;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,6 +19,16 @@ public class BoardTogDto {
     private Address pick_up;
     private String openKakao;
     private String content;
+
+    public BoardTogDto(BoardTog boardTog) {
+        this.id = boardTog.getId();
+        this.created_by = boardTog.getCreated_by();
+        this.food_id = boardTog.getFood_id();
+        this.recruits_cnt = boardTog.getRecruits_cnt();
+        this.pick_up = boardTog.getPick_up();
+        this.openKakao = boardTog.getOpenKakao();
+        this.content = boardTog.getContent();
+    }
 
     public BoardTog toBoardTogEntity() {
         BoardTog boardTog = BoardTog.builder()
