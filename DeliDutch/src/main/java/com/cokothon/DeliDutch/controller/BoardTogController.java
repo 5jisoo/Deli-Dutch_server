@@ -30,9 +30,7 @@ public class BoardTogController {
         try {
             Dormitory tempDormitory = Dormitory.KOOKMIN;
 
-            List<BoardTog> entities = boardTogService.retrieve(tempDormitory);
-
-            List<BoardTogDto> dtos = entities.stream().map(BoardTogDto::new).collect(Collectors.toList());
+            List<BoardTogDto> dtos = boardTogService.retrieve(tempDormitory);
 
             ResponseDTO<BoardTogDto> response = ResponseDTO.<BoardTogDto>builder().data(dtos).build();
 
@@ -44,12 +42,13 @@ public class BoardTogController {
     }
 
 
-    @PostMapping()
+    @PostMapping
     public BoardTogDto create(@RequestBody BoardTogFormDto boardTogFormDto) {
         BoardTog entity = BoardTog.builder()
                 .created_by(userRepository.findById(boardTogFormDto.getHost_id()).get())
                 .food(foodRepository.findById(boardTogFormDto.getFood_id()).get())
                 .recruits_cnt(boardTogFormDto.getRecruits_cnt())
+                .endTime(boardTogFormDto.getEnd_time())
                 .pick_up(boardTogFormDto.getPick_up())
                 .openKakao(boardTogFormDto.getOpenKakao())
                 .dormitory(boardTogFormDto.getDormitory()).build();

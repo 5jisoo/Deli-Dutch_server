@@ -31,6 +31,7 @@ public class BoardTogDto {
         this.host_id = boardTog.getCreated_by().getId();
         this.food_name = boardTog.getFood().getName();
         this.recruits_cnt = boardTog.getRecruits_cnt();
+        this.end_time = boardTog.getEndTime();
         this.pick_up = boardTog.getPick_up();
         this.openKakao = boardTog.getOpenKakao();
         this.dormitory = boardTog.getDormitory();

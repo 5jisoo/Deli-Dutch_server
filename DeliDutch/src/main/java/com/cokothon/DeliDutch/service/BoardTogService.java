@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,7 +22,12 @@ public class BoardTogService {
     }
 
     @Transactional(readOnly = true)
-    public List<BoardTog> retrieve(Dormitory dormitory) {
-        return boardTogRepository.findByDormitory(dormitory);
+    public List<BoardTogDto> retrieve(Dormitory dormitory) {
+        List<BoardTog> boardTogList = boardTogRepository.findByDormitory(dormitory);
+        List<BoardTogDto> retList = new ArrayList<>();
+        for (BoardTog boardTog : boardTogList) {
+            retList.add(BoardTog.of(boardTog));
+        }
+        return retList;
     }
 }

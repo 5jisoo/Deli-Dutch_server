@@ -1,9 +1,11 @@
 package com.cokothon.DeliDutch.entity;
 
 import com.cokothon.DeliDutch.constant.Dormitory;
+import com.cokothon.DeliDutch.dto.BoardTogDto;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Builder
 @AllArgsConstructor
@@ -39,6 +41,22 @@ public class BoardTog {
     @Column
     private String content;
 
+    @Column(name = "end_time")
+    private LocalDateTime endTime;
+
     @Enumerated(EnumType.STRING)
     private Dormitory dormitory;
+
+    public static BoardTogDto of(BoardTog boardTog) {
+        return BoardTogDto.builder()
+                .id(boardTog.getId())
+                .dormitory(boardTog.getDormitory())
+                .openKakao(boardTog.getOpenKakao())
+                .pick_up(boardTog.getPick_up())
+                .recruits_cnt(boardTog.getRecruits_cnt())
+                .end_time(boardTog.getEndTime())
+                .host_id(boardTog.getCreated_by().getId())
+                .food_name(boardTog.getFood().getName())
+                .build();
+    }
 }
