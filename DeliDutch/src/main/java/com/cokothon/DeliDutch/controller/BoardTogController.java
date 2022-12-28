@@ -42,7 +42,8 @@ public class BoardTogController {
         }
     }
 
-    @PostMapping
+
+    @PostMapping("/api/v1/boardTog")
     public BoardTogDto create(@RequestBody BoardTogDto boardTogDto) {
         BoardTog entity = BoardTog.builder()
                 .created_by(userRepository.findById(boardTogDto.getHost_id()).get())
