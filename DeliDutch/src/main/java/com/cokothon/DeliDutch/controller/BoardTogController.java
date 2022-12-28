@@ -18,6 +18,7 @@ public class BoardTogController {
     private final UserRepository userRepository;
     private final FoodRepository foodRepository;
     private final BoardTogService boardTogService;
+
     @PostMapping("/api/v1/boardTog")
     public BoardTogDto create(@RequestBody BoardTogDto boardTogDto) {
         BoardTog entity = BoardTog.builder()
@@ -26,7 +27,6 @@ public class BoardTogController {
                 .recruits_cnt(boardTogDto.getRecruits_cnt())
                 .pick_up(boardTogDto.getPick_up())
                 .openKakao(boardTogDto.getOpenKakao())
-                .content(boardTogDto.getContent())
                 .dormitory(boardTogDto.getDormitory()).build();
 
         return new BoardTogDto(boardTogService.save(entity));
