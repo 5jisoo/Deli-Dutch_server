@@ -23,13 +23,12 @@ public class OrderSepController {
     private final OrderSepService orderSepService;
 
     @PostMapping("/api/v1/orderSep")
-    public OrderSepDto sendOrder(@RequestBody OrderSepDto orderSepDto) {
+    public OrderSepDto makeOrder(@RequestBody OrderSepDto orderSepDto) {
         OrderSep orderSep = OrderSep.builder()
                 .boardSep(boardSepRepository.findById(orderSepDto.getBoardSep_id()).get())
                 .food(foodRepository.findById(orderSepDto.getFood_id()).get())
                 .joinUser(userRepository.findById(orderSepDto.getJoinUser_id()).get()).build();
 
-        // 서비스 메서드 추가해야함 !!!!!!!!
-        return orderSepDto;
+        return new OrderSepDto(orderSepService.sendOrder(orderSep));
     }
 }
