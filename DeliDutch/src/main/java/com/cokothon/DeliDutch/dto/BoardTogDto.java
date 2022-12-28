@@ -1,6 +1,7 @@
 package com.cokothon.DeliDutch.dto;
 
 import com.cokothon.DeliDutch.entity.Address;
+import com.cokothon.DeliDutch.entity.BoardTog;
 import com.cokothon.DeliDutch.entity.Food;
 import com.cokothon.DeliDutch.entity.User;
 import lombok.*;
@@ -22,8 +23,8 @@ public class BoardTogDto {
     private String openKakao;
     private String content;
 
-    public BoardTogDto toBoardTogEntity() {
-        BoardTogDto boardTogDto = BoardTogDto.builder()
+    public BoardTog toBoardTogEntity() {
+        BoardTog boardTog = BoardTog.builder()
                 .id(id)
                 .created_by(created_by)
                 .food_id(food_id)
@@ -33,6 +34,6 @@ public class BoardTogDto {
                 .content(content)
                 .build();
 
-        return boardTogDto;
+        return boardTog;
     }
 }
