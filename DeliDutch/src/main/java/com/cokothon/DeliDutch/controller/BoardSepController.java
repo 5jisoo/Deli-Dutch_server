@@ -19,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -48,7 +49,7 @@ public class BoardSepController {
     }
 
     @PostMapping("/api/v1/boardSep")
-    public BoardSepDto create(@RequestBody BoardSepDto boardSepDto) {
+    public ResponseDTO<BoardSepDto> create(@RequestBody BoardSepDto boardSepDto) {
         BoardSep entity = BoardSep.builder()
                 .user(userRepository.findById(boardSepDto.getHost_id()).get())
                 .restaurant(restaurantRepository.findById(boardSepDto.getRestaurant_id()).get())
@@ -58,11 +59,19 @@ public class BoardSepController {
                 .boardTitle(boardSepDto.getBoard_title())
                 .dormitory(boardSepDto.getDormitory()).build();
 
-        return new BoardSepDto(boardSepService.save(entity));
+        BoardSepDto dto = new BoardSepDto(boardSepService.save(entity));
+        List<BoardSepDto> dtos = new ArrayList<>();
+        dtos.add(dto);
+
+        ResponseDTO<BoardSepDto> response = ResponseDTO.<BoardSepDto>builder().data(dtos).build();
+
+        return response;
     }
 
     @GetMapping("/api/v1/boardSep/{id}")
-    public List<FoodDto> getBoardSepById(@PathVariable("id") long id) {
-        return boardSepService.showFoodList(id);
+    public ResponseDTO<FoodDto> getBoardSepById(@PathVariable("id") long id) {
+        List<FoodDto> dtos = boardSepService.showFoodList(id);
+        ResponseDTO<FoodDto> response = ResponseDTO.<FoodDto>builder().data(dtos).build();
+        return response;
     }
 }

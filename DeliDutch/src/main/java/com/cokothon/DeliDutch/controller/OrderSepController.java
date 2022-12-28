@@ -2,6 +2,7 @@ package com.cokothon.DeliDutch.controller;
 
 import com.cokothon.DeliDutch.dto.OrderSepDto;
 import com.cokothon.DeliDutch.dto.OrderTogDto;
+import com.cokothon.DeliDutch.dto.ResponseDTO;
 import com.cokothon.DeliDutch.entity.OrderSep;
 import com.cokothon.DeliDutch.entity.OrderTog;
 import com.cokothon.DeliDutch.repository.BoardSepRepository;
@@ -14,6 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class OrderSepController {
@@ -23,12 +27,16 @@ public class OrderSepController {
     private final OrderSepService orderSepService;
 
     @PostMapping("/api/v1/orderSep")
-    public OrderSepDto makeOrder(@RequestBody OrderSepDto orderSepDto) {
+    public ResponseDTO<OrderSepDto> makeOrder(@RequestBody OrderSepDto orderSepDto) {
         OrderSep orderSep = OrderSep.builder()
                 .boardSep(boardSepRepository.findById(orderSepDto.getBoardSep_id()).get())
                 .food(foodRepository.findById(orderSepDto.getFood_id()).get())
                 .joinUser(userRepository.findById(orderSepDto.getJoinUser_id()).get()).build();
 
-        return new OrderSepDto(orderSepService.sendOrder(orderSep));
+        OrderSepDto dto = new OrderSepDto(orderSepService.sendOrder(orderSep));
+        List<OrderSepDto> dtos = new ArrayList<>();
+        dtos.add(dto);
+
+        return ResponseDTO.<OrderSepDto>builder().data(dtos).build();
     }
 }

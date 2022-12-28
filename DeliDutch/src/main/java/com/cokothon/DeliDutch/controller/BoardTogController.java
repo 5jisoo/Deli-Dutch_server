@@ -1,6 +1,7 @@
 package com.cokothon.DeliDutch.controller;
 
 import com.cokothon.DeliDutch.constant.Dormitory;
+import com.cokothon.DeliDutch.dto.BoardSepDto;
 import com.cokothon.DeliDutch.dto.BoardTogDto;
 import com.cokothon.DeliDutch.dto.BoardTogFormDto;
 import com.cokothon.DeliDutch.dto.ResponseDTO;
@@ -14,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,9 +43,8 @@ public class BoardTogController {
         }
     }
 
-
     @PostMapping
-    public BoardTogDto create(@RequestBody BoardTogFormDto boardTogFormDto) {
+    public ResponseDTO<BoardTogDto> create(@RequestBody BoardTogFormDto boardTogFormDto) {
         BoardTog entity = BoardTog.builder()
                 .created_by(userRepository.findById(boardTogFormDto.getHost_id()).get())
                 .food(foodRepository.findById(boardTogFormDto.getFood_id()).get())
@@ -55,7 +56,11 @@ public class BoardTogController {
                 .content(boardTogFormDto.getContent())
                 .build();
 
-        return new BoardTogDto(boardTogService.save(entity));
+        BoardTogDto dto = new BoardTogDto(boardTogService.save(entity));
+        List<BoardTogDto> dtos = new ArrayList<>();
+        dtos.add(dto);
+
+        return ResponseDTO.<BoardTogDto>builder().data(dtos).build();
     }
 
 }
