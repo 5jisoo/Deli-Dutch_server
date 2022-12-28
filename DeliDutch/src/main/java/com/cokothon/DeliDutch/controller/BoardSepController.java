@@ -3,9 +3,11 @@ package com.cokothon.DeliDutch.controller;
 import com.cokothon.DeliDutch.constant.Dormitory;
 import com.cokothon.DeliDutch.dto.BoardSepDto;
 import com.cokothon.DeliDutch.dto.BoardTogDto;
+import com.cokothon.DeliDutch.dto.FoodDto;
 import com.cokothon.DeliDutch.dto.ResponseDTO;
 import com.cokothon.DeliDutch.entity.BoardSep;
 import com.cokothon.DeliDutch.entity.BoardTog;
+import com.cokothon.DeliDutch.entity.Food;
 import com.cokothon.DeliDutch.repository.FoodRepository;
 import com.cokothon.DeliDutch.repository.RestaurantRepository;
 import com.cokothon.DeliDutch.repository.UserRepository;
@@ -14,10 +16,7 @@ import com.cokothon.DeliDutch.service.BoardTogService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -57,5 +56,10 @@ public class BoardSepController {
                 .dormitory(boardSepDto.getDormitory()).build();
 
         return new BoardSepDto(boardSepService.save(entity));
+    }
+
+    @GetMapping("/api/v1/boardSep/{id}")
+    public List<FoodDto> getBoardSepById(@PathVariable("id") long id) {
+        return boardSepService.showFoodList(id);
     }
 }
