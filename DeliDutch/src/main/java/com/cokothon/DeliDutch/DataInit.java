@@ -36,5 +36,7 @@ public class DataInit {
                 .username("s나송")
                 .password("aaa")
                 .dormitory(Dormitory.SOOKMYUNG).build());
+
+
     }
 }

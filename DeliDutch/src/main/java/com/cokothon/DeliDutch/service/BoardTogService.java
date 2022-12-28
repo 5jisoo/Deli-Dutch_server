@@ -23,7 +23,7 @@ public class BoardTogService {
 
     @Transactional(readOnly = true)
     public List<BoardTogDto> retrieve(Dormitory dormitory) {
-        List<BoardTog> boardTogList = boardTogRepository.findByDormitory(dormitory);
+        List<BoardTog> boardTogList = boardTogRepository.findBoardTogList(dormitory.name());
         List<BoardTogDto> retList = new ArrayList<>();
         for (BoardTog boardTog : boardTogList) {
             retList.add(BoardTog.of(boardTog));
