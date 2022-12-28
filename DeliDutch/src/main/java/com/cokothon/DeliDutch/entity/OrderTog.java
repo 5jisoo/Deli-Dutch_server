@@ -27,4 +27,6 @@ public class OrderTog {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_tog_id")
     private BoardTog boardTog;
+
+
 }

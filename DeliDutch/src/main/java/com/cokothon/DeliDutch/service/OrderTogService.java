@@ -6,19 +6,21 @@ import com.cokothon.DeliDutch.repository.BoardTogRepository;
 import com.cokothon.DeliDutch.repository.OrderTogRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class OrderTogService {
     private final OrderTogRepository orderTogRepository;
     private final BoardTogRepository boardTogRepository;
 
-    public OrderTog sendOrder(OrderTog orderTog) {
-        BoardTog boardTog = orderTog.getBoardTog();
-        boardTog.setRecruits_cnt(boardTog.getRecruits_cnt() - 1);
+    public OrderTog createOrder(OrderTog orderTog) {
+        Optional<BoardTog> boardTog = boardTogRepository.findById(orderTog.getBoardTog().getId());
 
-//        BoardTog boardTog1 = boardTogRepository.findById(orderTog.getBoardTog().getId()).get();
-//        boardTog1.setRecruits_cnt(boardTog1.getRecruits_cnt()-1);
+        boardTog.ifPresent(BoardTog::decreaseCnt);
 
         return orderTogRepository.save(orderTog);
     }

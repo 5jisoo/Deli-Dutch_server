@@ -2,6 +2,7 @@ package com.cokothon.DeliDutch.entity;
 
 import com.cokothon.DeliDutch.constant.Dormitory;
 import com.cokothon.DeliDutch.dto.BoardTogDto;
+import com.cokothon.DeliDutch.exception.NotEnoughRecruitsCountException;
 import lombok.*;
 
 import javax.persistence.*;
@@ -20,12 +21,11 @@ public class BoardTog {
     @Column(name = "board_tog_id")
     private Long id;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User created_by;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "food_id")
     private Food food;
 
@@ -59,5 +59,12 @@ public class BoardTog {
                 .food_name(boardTog.getFood().getName())
                 .content(boardTog.getContent())
                 .build();
+    }
+
+    public void decreaseCnt() {
+        recruits_cnt--;
+        if(recruits_cnt < 0) {
+            throw new NotEnoughRecruitsCountException("정원 초과");
+        }
     }
 }
