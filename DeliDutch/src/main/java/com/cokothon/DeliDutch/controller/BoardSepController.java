@@ -13,8 +13,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
 public class BoardSepController {
 
@@ -28,7 +29,7 @@ public class BoardSepController {
                 .user(userRepository.findById(boardSepDto.getHost_id()).get())
                 .restaurant(restaurantRepository.findById(boardSepDto.getRestaurant_id()).get())
                 .endTime(boardSepDto.getEnd_time())
-                .openKakao(boardSepDto.getOpenKakako())
+                .openKakao(boardSepDto.getOpenKakao())
                 .pick_up(boardSepDto.getPick_up())
                 .boardTitle(boardSepDto.getBoard_title())
                 .dormitory(boardSepDto.getDormitory()).build();
