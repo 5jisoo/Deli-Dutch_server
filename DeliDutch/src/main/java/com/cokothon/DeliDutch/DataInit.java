@@ -1,9 +1,11 @@
 package com.cokothon.DeliDutch;
 
 import com.cokothon.DeliDutch.constant.Dormitory;
+import com.cokothon.DeliDutch.entity.BoardSep;
 import com.cokothon.DeliDutch.entity.Food;
 import com.cokothon.DeliDutch.entity.Restaurant;
 import com.cokothon.DeliDutch.entity.User;
+import com.cokothon.DeliDutch.service.BoardSepService;
 import com.cokothon.DeliDutch.service.FoodService;
 import com.cokothon.DeliDutch.service.RestaurantService;
 import com.cokothon.DeliDutch.service.UserService;
@@ -19,6 +21,7 @@ public class DataInit {
     private final FoodService foodService;
     private final RestaurantService restaurantService;
     private final UserService userService;
+    private final BoardSepService boardSepService;
 
     @PostConstruct
     public void init() {
@@ -36,7 +39,6 @@ public class DataInit {
                 .username("s나송")
                 .password("aaa")
                 .dormitory(Dormitory.SOOKMYUNG).build());
-
 
     }
 }

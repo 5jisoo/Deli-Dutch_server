@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 @Table(name = "Board_Separate")
 public class BoardSep {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "board_sep_id")
     private Long id;
 
