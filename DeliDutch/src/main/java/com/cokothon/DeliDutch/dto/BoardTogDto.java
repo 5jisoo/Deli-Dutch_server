@@ -1,5 +1,6 @@
 package com.cokothon.DeliDutch.dto;
 
+import com.cokothon.DeliDutch.constant.Dormitory;
 import com.cokothon.DeliDutch.entity.*;
 import lombok.*;
 
@@ -16,9 +17,11 @@ public class BoardTogDto {
     private User created_by;
     private Food food_id;
     private int recruits_cnt;
-    private Address pick_up;
+    private String pick_up;
     private String openKakao;
     private String content;
+
+    private Dormitory dormitory;
 
     public BoardTogDto(BoardTog boardTog) {
         this.id = boardTog.getId();
@@ -28,17 +31,19 @@ public class BoardTogDto {
         this.pick_up = boardTog.getPick_up();
         this.openKakao = boardTog.getOpenKakao();
         this.content = boardTog.getContent();
+        this.dormitory = boardTog.getDormitory();
     }
 
-    public BoardTog toBoardTogEntity() {
+    public BoardTog toBoardTogEntity(BoardTogDto boardTogDto) {
         BoardTog boardTog = BoardTog.builder()
-                .id(id)
-                .created_by(created_by)
-                .food_id(food_id)
-                .recruits_cnt(recruits_cnt)
-                .pick_up(pick_up)
-                .openKakao(openKakao)
-                .content(content)
+                .id(boardTogDto.getId())
+                .created_by(boardTogDto.getCreated_by())
+                .food_id(boardTogDto.getFood_id())
+                .recruits_cnt(boardTogDto.getRecruits_cnt())
+                .pick_up(boardTogDto.getPick_up())
+                .openKakao(boardTogDto.getOpenKakao())
+                .content(boardTogDto.getContent())
+                .dormitory(boardTogDto.getDormitory())
                 .build();
 
         return boardTog;

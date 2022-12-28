@@ -1,5 +1,6 @@
 package com.cokothon.DeliDutch.dto;
 
+import com.cokothon.DeliDutch.constant.Dormitory;
 import com.cokothon.DeliDutch.entity.Address;
 import com.cokothon.DeliDutch.entity.BoardSep;
 import com.cokothon.DeliDutch.entity.Restaurant;
@@ -21,13 +22,15 @@ public class BoardSepDto {
 
     private LocalDateTime end_time;
 
-    private Address pick_up;
+    private String pick_up;
 
     private String openKakako;
 
     private String board_title;
 
     private String content;
+
+    private Dormitory dormitory;
 
     public BoardSepDto(BoardSep boardSep) {
         this.id = boardSep.getId();
@@ -38,6 +41,7 @@ public class BoardSepDto {
         this.openKakako = boardSep.getOpenKakao();
         this.board_title = boardSep.getBoardTitle();
         this.content = boardSep.getContents();
+        this.dormitory = boardSep.getDormitory();
     }
 
     public static BoardSep toEntity(final BoardSepDto boardSepDto) {
@@ -50,6 +54,7 @@ public class BoardSepDto {
                 .pick_up(boardSepDto.getPick_up())
                 .openKakao(boardSepDto.getOpenKakako())
                 .contents(boardSepDto.getContent())
+                .dormitory(boardSepDto.getDormitory())
                 .build();
     }
 }

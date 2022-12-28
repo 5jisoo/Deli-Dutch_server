@@ -1,5 +1,6 @@
 package com.cokothon.DeliDutch.entity;
 
+import com.cokothon.DeliDutch.constant.Dormitory;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -31,14 +32,15 @@ public class BoardTog {
     @Column
     private int recruits_cnt;
 
-    @Embedded
-    private Address pick_up;
+    @Column
+    private String pick_up;
 
     @Column(name = "open_kakao")
     private String openKakao;
 
-
     @Column
     private String content;
 
+    @Enumerated(EnumType.STRING)
+    private Dormitory dormitory;
 }

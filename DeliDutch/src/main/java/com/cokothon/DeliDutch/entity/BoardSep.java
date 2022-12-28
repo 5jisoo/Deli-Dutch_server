@@ -1,5 +1,6 @@
 package com.cokothon.DeliDutch.entity;
 
+import com.cokothon.DeliDutch.constant.Dormitory;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -31,8 +32,8 @@ public class BoardSep {
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 
-    @Embedded
-    private Address pick_up;
+    @Column(name = "pick_up")
+    private String pick_up;
 
     @Column(name = "open_kakao")
     private String openKakao;
@@ -43,4 +44,7 @@ public class BoardSep {
     @Column(name = "board_sep_content")
     @Lob
     private String contents;
+
+    @Enumerated(EnumType.STRING)
+    private Dormitory dormitory;
 }
