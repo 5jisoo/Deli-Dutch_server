@@ -28,6 +28,6 @@ public class OrderTogController {
                 .boardTog(boardTogRepository.findById(orderTogDto.getBoardTog_id()).get())
                 .joinUser(userRepository.findById(orderTogDto.getJoinUser_id()).get()).build();
 
-        return new OrderTogDto(orderTogService.sendOrder(orderTog));
+        return new OrderTogDto(orderTogService.createOrder(orderTog));
     }
 }
