@@ -16,9 +16,9 @@ import java.time.LocalDateTime;
 public class BoardSepDto {
     private Long id;
 
-    private User host;
+    private Long host_id;
 
-    private Restaurant restaurant;
+    private Long restaurant_id;
 
     private LocalDateTime end_time;
 
@@ -34,27 +34,13 @@ public class BoardSepDto {
 
     public BoardSepDto(BoardSep boardSep) {
         this.id = boardSep.getId();
-        this.host = boardSep.getUser();
-        this.restaurant = boardSep.getRestaurant();
+        this.host_id = boardSep.getUser().getId();
+        this.restaurant_id = boardSep.getRestaurant().getId();
         this.end_time = boardSep.getEndTime();
         this.pick_up = boardSep.getPick_up();
         this.openKakako = boardSep.getOpenKakao();
         this.board_title = boardSep.getBoardTitle();
         this.content = boardSep.getContents();
         this.dormitory = boardSep.getDormitory();
-    }
-
-    public static BoardSep toEntity(final BoardSepDto boardSepDto) {
-        return BoardSep.builder()
-                .id(boardSepDto.getId())
-                .boardTitle(boardSepDto.getBoard_title())
-                .user(boardSepDto.getHost())
-                .restaurant(boardSepDto.getRestaurant())
-                .endTime(boardSepDto.getEnd_time())
-                .pick_up(boardSepDto.getPick_up())
-                .openKakao(boardSepDto.getOpenKakako())
-                .contents(boardSepDto.getContent())
-                .dormitory(boardSepDto.getDormitory())
-                .build();
     }
 }

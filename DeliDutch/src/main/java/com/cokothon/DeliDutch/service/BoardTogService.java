@@ -13,7 +13,9 @@ import java.util.List;
 public class BoardTogService {
     private final BoardTogRepository boardTogRepository;
 
-    public long save(BoardTogDto boardTogDto) {
-        return boardTogRepository.save(boardTogDto.toBoardTogEntity()).getId();
+    public BoardTog save(BoardTog boardTog) {
+        return boardTogRepository.save(boardTog);
     }
+
+
 }

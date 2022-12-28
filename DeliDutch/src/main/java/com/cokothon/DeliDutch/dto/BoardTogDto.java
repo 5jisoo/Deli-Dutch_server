@@ -14,8 +14,8 @@ import javax.persistence.*;
 public class BoardTogDto {
 
     private Long id;
-    private User created_by;
-    private Food food_id;
+    private Long host_id;     // 게시판 만든 사용자 아이디
+    private Long food_id;           // 음식 아이디
     private int recruits_cnt;
     private String pick_up;
     private String openKakao;
@@ -25,27 +25,12 @@ public class BoardTogDto {
 
     public BoardTogDto(BoardTog boardTog) {
         this.id = boardTog.getId();
-        this.created_by = boardTog.getCreated_by();
-        this.food_id = boardTog.getFood_id();
+        this.host_id = boardTog.getCreated_by().getId();
+        this.food_id = boardTog.getFood().getId();
         this.recruits_cnt = boardTog.getRecruits_cnt();
         this.pick_up = boardTog.getPick_up();
         this.openKakao = boardTog.getOpenKakao();
         this.content = boardTog.getContent();
         this.dormitory = boardTog.getDormitory();
-    }
-
-    public BoardTog toBoardTogEntity(BoardTogDto boardTogDto) {
-        BoardTog boardTog = BoardTog.builder()
-                .id(boardTogDto.getId())
-                .created_by(boardTogDto.getCreated_by())
-                .food_id(boardTogDto.getFood_id())
-                .recruits_cnt(boardTogDto.getRecruits_cnt())
-                .pick_up(boardTogDto.getPick_up())
-                .openKakao(boardTogDto.getOpenKakao())
-                .content(boardTogDto.getContent())
-                .dormitory(boardTogDto.getDormitory())
-                .build();
-
-        return boardTog;
     }
 }

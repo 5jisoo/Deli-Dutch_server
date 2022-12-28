@@ -27,7 +27,7 @@ public class BoardTog {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "food_id")
-    private Food food_id;
+    private Food food;
 
     @Column
     private int recruits_cnt;
