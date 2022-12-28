@@ -2,40 +2,39 @@ package com.cokothon.DeliDutch.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-@Data
+@NoArgsConstructor
+@Getter
 @Entity
-@Table(name = "Board_Separate")
-public class BoardSep {
+public class BoardTog {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "board_sep_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "board_tog_id")
     private Long id;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User user;
-
-    @Column(name = "end_time")
-    private LocalDateTime endTime;
+    private User created_by;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "restaurant_id")
-    private Restaurant restaurant;
+    @JoinColumn(name = "food_id")
+    private Food food_id;
+
+    @Column
+    private int recruits_cnt;
 
     @Embedded
     private Address pick_up;
 
     @Column(name = "open_kakao")
     private String openKakao;
-
 
 }
