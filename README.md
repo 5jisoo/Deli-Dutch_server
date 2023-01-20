@@ -29,3 +29,4 @@ KOSS X CODE IT 연합 해커톤 'COKOTHON'
 <img src="https://img.shields.io/badge/postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white">
 
 ## 시연 영상
+<img src="https://github.com/5jisoo/Deli-Dutch_server/blob/main/img/DeliDutch.gif?raw=true">
