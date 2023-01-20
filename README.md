@@ -1,5 +1,5 @@
 <div align=center> 
-KOSS X CODE IT 연합 해커톤 'COKOTHON'
+CODE IT X KOSS 연합 해커톤 'COKOTHON'
 <h1>Deli-Dutch 딜리더치</h1>
 🏍️학교 기숙사생들을 위한 배달 앱🏍️
 </div>
